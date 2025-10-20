@@ -2,12 +2,12 @@ pipeline {
     agent any  // Run on any available Jenkins agent
 
     stages {
-        // stage('Checkout') {
-        //     steps {
-        //         // Clone the repository
-        //         checkout scm
-        //     }
-        // }
+        stage('Checkout') {
+            steps {
+                // Clone the repository
+                checkout scm
+            }
+        }
 
         stage('Build') {
             steps {
