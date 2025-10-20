@@ -13,7 +13,7 @@ pipeline {
             steps {
                 echo 'Building the project...'
                 // Example: compile or install dependencies
-                sh 'echo "Simulating build step..."'
+                sh 'echo "Simulating build step...."'
                 sh '''cd app
                     docker build -t api-server:test --target test .
                     docker run --rm api-server:test'''
