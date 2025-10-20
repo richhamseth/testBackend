@@ -25,7 +25,8 @@ pipeline {
                 sh 'echo "Simulating test step..."'
                 sh '''cd app
                     docker build -t api-server:test --target test .
-                    docker run --rm api-server:test'''
+                    docker run --rm api-server:test
+                    docker rmi api-server:test'''
             }
         }
 
@@ -36,7 +37,7 @@ pipeline {
                 sh 'echo "Simulating deploy step..."'
                 sh '''cd app
                     docker build -t api-server:run --target run .
-                    docker run -p 8085:8080 api-server:run'''
+                    docker run -d -p 8085:8080 api-server:run'''
             }
         }
     }
