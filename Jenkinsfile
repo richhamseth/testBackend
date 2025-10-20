@@ -33,11 +33,9 @@ pipeline {
         stage('Deploy') {
             steps {
                 echo 'Deploying...'
-                // Optional for testing
                 sh 'echo "Simulating deploy step..."'
-                sh '''cd app
-                    docker build -t api-server:run --target run .
-                    docker run -d -p 8085:8080 api-server:run'''
+                sh 'docker run -d -p 8085:8080 api-server:run'
+                sh 'docker system prune -f'
             }
         }
     }
