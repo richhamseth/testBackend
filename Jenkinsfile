@@ -12,11 +12,9 @@ pipeline {
         stage('Build') {
             steps {
                 echo 'Building the project...'
-                // Example: compile or install dependencies
                 sh 'echo "Simulating build step...."'
                 sh '''cd app
-                    docker build -t api-server:test --target test .
-                    docker run --rm api-server:test'''
+                    docker build -t api-server:test --target run .'''
             }
         }
 
@@ -25,6 +23,9 @@ pipeline {
                 echo 'Running tests...'
                 // Example: run unit tests
                 sh 'echo "Simulating test step..."'
+                sh '''cd app
+                    docker build -t api-server:test --target test .
+                    docker run --rm api-server:test'''
             }
         }
 
@@ -33,6 +34,9 @@ pipeline {
                 echo 'Deploying...'
                 // Optional for testing
                 sh 'echo "Simulating deploy step..."'
+                sh '''cd app
+                    docker build -t api-server:run --target run .
+                    docker run -p 8085:8080 api-server:run'''
             }
         }
     }
