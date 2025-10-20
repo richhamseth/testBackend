@@ -12,7 +12,7 @@ def client():
 # Test fetching gists for a valid GitHub user
 def test_get_user_gists_positive(client):
     response = client.get("/octocat")
-    assert response.status_code == 200, "Expected status 200"
+    assert response.status_code == 201, "Expected status 200"
 
     data = response.get_json()
     assert isinstance(data, list), "Response should be in list"

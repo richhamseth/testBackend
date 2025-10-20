@@ -5,6 +5,7 @@ COPY *.py .
 
 # Stage for testing
 FROM base AS test
+COPY testing .
 RUN pip install pytest requests-mock
 CMD ["pytest", "-v", "functional_test.py"]
 
