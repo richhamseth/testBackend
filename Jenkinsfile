@@ -14,7 +14,7 @@ pipeline {
                 echo 'Building the project...'
                 sh 'echo "Simulating build step...."'
                 sh '''cd app
-                    docker build -t api-server:test --target run .'''
+                    docker build -t api-server:run --target run .'''
             }
         }
 
